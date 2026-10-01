@@ -3,7 +3,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ .Values.backupRestore.namePrefix }}-backup
+  name: {{ .Values.backupRestore.namePrefix }}-backup-acd
 spec:
   # Run on demand for testing: kubectl create job --from=cronjob/{{ .Values.backupRestore.namePrefix }}-backup {{ .Values.backupRestore.namePrefix }}-backup-manual -n {{ .Values.backupRestore.app.namespace }}
   suspend: {{ .Values.backupRestore.suspendBackup }}
