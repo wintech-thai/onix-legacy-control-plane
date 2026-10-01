@@ -1,7 +1,7 @@
 
 onix-legacy-api:
   enabled: true
-  nameOverride: onix-legacy-api
+  nameOverride: onix-legacy-api-acd
 
   ingress:
     enabled: false

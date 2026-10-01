@@ -3,3 +3,35 @@ envAlias: prod
 isBackupSuspend: false
 onixLegacyApiDomain: onix-legacy-api2.acd.its-software-services.com
 onixAIPApiDomain: onix-legacy-api2.aip.its-software-services.com
+
+
+onixJobs:
+  imageTag: v1.0.27
+
+backupRestore:
+  enabled: true
+  namePrefix: onix-legacy
+  timeZone: "Asia/Bangkok"
+  s3TransferTimeoutSec: 3600
+
+  backupSchedule: "0 19 * * *"    # daily 19:00
+  restoreSchedule: "30 19 * * *"  # 30 min after backup, daily 19:30
+  suspendBackup: false
+  suspendRestore: true            # only meant to run on the NEW server once migration cutover begins
+  restartAppPodAfterRestore: "false"
+
+  db:
+    type: postgresql                   # postgresql | mysql
+    namespace: onix-prod
+    podName: postgresql-0
+
+  app:
+    namespace: onix-prod
+    podKeyword: onix-legacy-api-acd         # used to find the pod since its name changes on restart
+    dataPath: /wis/data
+
+  storage:
+    url: https://storage.googleapis.com
+    bucket: devhubs-backup
+    bucketPath: onix-legacy-prod
+    filePrefix: onix-prod-acd
