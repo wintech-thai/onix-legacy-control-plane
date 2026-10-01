@@ -31,7 +31,7 @@ metadata:
     nginx.org/client-max-body-size: 50m
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: basic-auth-secret
-    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - Onix API (AIP)'
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - Onix API'
 spec:
   ingressClassName: nginx
   rules:
@@ -42,6 +42,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: onix-prod-onix-legacy-api-aip #-{{ .Values.envAlias }}
+            name: onix-{{ .Values.envAlias }}-onix-legacy-api-aip
             port:
               number: 80
