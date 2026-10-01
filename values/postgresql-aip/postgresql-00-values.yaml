@@ -1,4 +1,4 @@
-postgresql:
+postgresql-aip:
   enabled: true
   fullnameOverride: postgresql-aip
   auth:

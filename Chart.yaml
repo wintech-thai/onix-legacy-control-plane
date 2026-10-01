@@ -25,3 +25,10 @@ dependencies:
     condition: postgresql.enabled
     repository: "https://charts.bitnami.com/bitnami"
     version: "14.0.5"
+
+  ### pgSQL ###
+  - name: "postgresql"
+    alias: postgresql-aip
+    condition: postgresql-aip.enabled
+    repository: "https://charts.bitnami.com/bitnami"
+    version: "14.0.5"
