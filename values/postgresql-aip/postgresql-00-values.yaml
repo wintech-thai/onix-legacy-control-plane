@@ -1,0 +1,13 @@
+postgresql:
+  enabled: true
+  fullnameOverride: postgresql-aip
+  auth:
+    username: onix_prod_aip_acdesign # Create user same name as DB
+    database: onix_prod_aip_acdesign
+    existingSecret: postgres-secret
+    secretKeys:
+      adminPasswordKey: adminPasswordKey
+      userPasswordKey: adminPasswordKey
+
+  image:
+    repository: bitnamilegacy/postgresql
