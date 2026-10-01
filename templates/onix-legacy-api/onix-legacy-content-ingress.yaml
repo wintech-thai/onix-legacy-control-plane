@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: onix-legacy-content-ing
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.org/client-max-body-size: 50m
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "{{ .Values.onixLegacyApiDomain }}"
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: "/onix/api/acd/acdesign/content.php"
+        backend:
+          service:
+            name: onix-{{ .Values.envAlias }}-onix-legacy-api
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: onix-legacy-content-aip-ing
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.org/client-max-body-size: 50m
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "{{ .Values.onixAIPApiDomain }}"
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: "/onix/api/acd/acdesign/content.php"
+        backend:
+          service:
+            name: onix-{{ .Values.envAlias }}-onix-legacy-api-aip
+            port:
+              number: 80
