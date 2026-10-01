@@ -81,10 +81,10 @@ onix-legacy-api-aip:
         value: "/wis/data/storage"
 
       - name: ONIX_DSN
-        value: "dbname=onix_prod_aip_acdesign;host=postgresql;port=5432"
+        value: "dbname=onix_prod_aip_acdesign;host=postgresql-aip;port=5432"
 
       - name: ONIX_DB_USERNAME
-        value: "onix_prod_acd_acdesign" # Use same user as ACD
+        value: "onix_prod_aip_acdesign" # Use same user as AIP
 
       - name: ONIX_DB_PASSWORD
         valueFrom:
