@@ -3,3 +3,10 @@ envAlias: dev
 isBackupSuspend: true
 onixLegacyApiDomain: onix-legacy-api2.acd-np.its-software-services.com
 onixAIPApiDomain: onix-legacy-api2.aip-np.its-software-services.com
+
+
+onixJobs:
+  imageTag: v1.0.27
+
+backupRestore:
+  enabled: false
