@@ -1,0 +1,11 @@
+
+onix-legacy-api:
+  pods:
+    image:
+      tag: "v0.0.3"
+
+onix-legacy-api-aip:
+  pods:
+    image:
+      tag: "v0.0.3"
+

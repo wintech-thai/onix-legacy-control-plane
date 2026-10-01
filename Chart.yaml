@@ -1,0 +1,27 @@
+apiVersion: v2
+name: helm-onix
+version: 1.0.0
+appVersion: 1.23.0
+description: A Helm chart wrapper for Onix Apps
+
+dependencies:
+  ### onix-legacy-api ###
+  - name: "generic-app"
+    alias: onix-legacy-api
+    condition: onix-legacy-api.enabled
+    repository: "https://charts.visonneau.fr/"
+    version: "0.0.14"
+
+  ### onix-legacy-api (AIP) ###
+  - name: "generic-app"
+    alias: onix-legacy-api-aip
+    condition: onix-legacy-api-aip.enabled
+    repository: "https://charts.visonneau.fr/"
+    version: "0.0.14"
+
+  ### pgSQL ###
+  - name: "postgresql"
+    alias: postgresql
+    condition: postgresql.enabled
+    repository: "https://charts.bitnami.com/bitnami"
+    version: "14.0.5"

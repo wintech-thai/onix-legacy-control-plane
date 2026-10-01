@@ -1,0 +1,94 @@
+onix-legacy-api:
+  pods:
+    replicas: 1
+
+    resources:
+      limits:
+        cpu: 150m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+    env:
+      - name: ONIX_STAGE
+        value: "dev"
+
+      - name: WIS_CORE_ENCRYPTED
+        value: "false"
+
+      - name: POST_PARAM_NAME
+        value: "DBOSOBJ"
+
+      - name: ONIX_SESSION_DIR
+        value: "/wis/data/sessions"
+
+      - name: ONIX_WIP_DIR
+        value: "/wis/data/wip"
+
+      - name: ONIX_LOCK_DIR
+        value: "/wis/data/locked"
+
+      - name: ONIX_STORAGE_DIR
+        value: "/wis/data/storage"
+
+      - name: ONIX_DSN
+        value: "dbname=onix_prod_acd_acdesign;host=postgresql;port=5432"
+
+      - name: ONIX_DB_USERNAME
+        value: "onix_prod_acd_acdesign"
+
+      - name: ONIX_DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: postgres-secret 
+            key: adminPasswordKey
+            optional: false
+
+# AIP company
+onix-legacy-api-aip:
+  pods:
+    replicas: 1
+
+    resources:
+      limits:
+        cpu: 150m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+    env:
+      - name: ONIX_STAGE
+        value: "dev"
+
+      - name: WIS_CORE_ENCRYPTED
+        value: "false"
+
+      - name: POST_PARAM_NAME
+        value: "DBOSOBJ"
+
+      - name: ONIX_SESSION_DIR
+        value: "/wis/data/sessions"
+
+      - name: ONIX_WIP_DIR
+        value: "/wis/data/wip"
+
+      - name: ONIX_LOCK_DIR
+        value: "/wis/data/locked"
+
+      - name: ONIX_STORAGE_DIR
+        value: "/wis/data/storage"
+
+      - name: ONIX_DSN
+        value: "dbname=onix_prod_aip_acdesign;host=postgresql;port=5432"
+
+      - name: ONIX_DB_USERNAME
+        value: "onix_prod_acd_acdesign" # Use same user as ACD
+
+      - name: ONIX_DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: postgres-secret 
+            key: adminPasswordKey
+            optional: false

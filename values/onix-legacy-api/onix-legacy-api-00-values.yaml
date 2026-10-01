@@ -1,0 +1,101 @@
+
+onix-legacy-api:
+  enabled: true
+  nameOverride: onix-legacy-api
+
+  ingress:
+    enabled: false
+
+  podDisruptionBudget:
+    enabled: false
+
+  pods:
+    securityContext:
+      fsGroup: 69690 # id -g apache2
+    strategy:
+      type: Recreate
+    initContainers:
+      - name: volume-dirs-init-cntr
+        image: busybox:1.35
+        command:
+        - "/bin/mkdir"
+        args:
+        - "-p"
+        - "/wis/data/wip"
+        - "/wis/data/locked"
+        - "/wis/data/storage"
+        - "/wis/data/sessions"
+        volumeMounts:
+        - name: data-dir
+          mountPath: "/wis/data"
+
+    controller: deployment
+    image:
+      name: pjamenaja/onix-legacy-api
+
+    volumeMounts:
+      - name: data-dir
+        mountPath: /wis/data
+    volumes:
+      - name: data-dir
+        persistentVolumeClaim:
+          claimName: onix-data
+
+  service:
+    enabled: true
+    ports:
+      - port: 80
+        targetPort: 80
+        protocol: TCP
+        name: http
+
+# AIP company
+onix-legacy-api-aip:
+  enabled: true
+  nameOverride: onix-legacy-api-aip
+
+  ingress:
+    enabled: false
+
+  podDisruptionBudget:
+    enabled: false
+
+  pods:
+    securityContext:
+      fsGroup: 69690 # id -g apache2
+    strategy:
+      type: Recreate
+    initContainers:
+      - name: volume-dirs-init-cntr
+        image: busybox:1.35
+        command:
+        - "/bin/mkdir"
+        args:
+        - "-p"
+        - "/wis/data/wip"
+        - "/wis/data/locked"
+        - "/wis/data/storage"
+        - "/wis/data/sessions"
+        volumeMounts:
+        - name: data-dir
+          mountPath: "/wis/data"
+
+    controller: deployment
+    image:
+      name: pjamenaja/onix-legacy-api
+
+    volumeMounts:
+      - name: data-dir
+        mountPath: /wis/data
+    volumes:
+      - name: data-dir
+        persistentVolumeClaim:
+          claimName: onix-data-aip
+
+  service:
+    enabled: true
+    ports:
+      - port: 80
+        targetPort: 80
+        protocol: TCP
+        name: http

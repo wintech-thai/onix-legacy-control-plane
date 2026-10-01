@@ -1,0 +1,5 @@
+envGroup: production
+envAlias: prod
+isBackupSuspend: false
+onixLegacyApiDomain: onix-legacy-api2.acd.its-software-services.com
+onixAIPApiDomain: onix-legacy-api2.aip.its-software-services.com

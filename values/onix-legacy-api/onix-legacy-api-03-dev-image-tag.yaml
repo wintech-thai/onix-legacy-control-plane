@@ -1,0 +1,10 @@
+
+onix-legacy-api: # ACD company
+  pods:
+    image:
+      tag: "develop-fbf2774"
+
+onix-legacy-api-aip: # AIP company
+  pods:
+    image:
+      tag: "develop-fbf2774"
