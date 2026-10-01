@@ -3,7 +3,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ .Values.backupRestore.namePrefix }}-backup-acd
+  name: {{ .Values.backupRestore.namePrefix }}-backup-aip
 spec:
   # Run on demand for testing: kubectl create job --from=cronjob/{{ .Values.backupRestore.namePrefix }}-backup {{ .Values.backupRestore.namePrefix }}-backup-manual -n {{ .Values.backupRestore.app.namespace }}
   suspend: {{ .Values.backupRestore.suspendBackup }}
@@ -24,13 +24,13 @@ spec:
               args: ["app-backup.rb"]
               env:
                 - name: DB_POD_NAME
-                  value: "postgresql-0"
+                  value: "postgresql-aip-0"
 
                 - name: APP_POD_KEYWORD
-                  value: "onix-legacy-api-acd"
-
+                  value: "onix-legacy-api-aip"
+                  
                 - name: FILE_PREFIX
-                  value: "onix-prod-acd"
+                  value: "onix-prod-aip"
 
                 - name: DB_TYPE
                   value: "{{ .Values.backupRestore.db.type }}"

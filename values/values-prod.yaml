@@ -14,7 +14,7 @@ backupRestore:
   timeZone: "Asia/Bangkok"
   s3TransferTimeoutSec: 3600
 
-  backupSchedule: "0 19 * * *"    # daily 19:00
+  backupSchedule: "0 */4 * * *"    # every 4 hours, daily at 00:00, 04:00, 08:00, 12:00, 16:00, 20:00
   restoreSchedule: "30 19 * * *"  # 30 min after backup, daily 19:30
   suspendBackup: false
   suspendRestore: true            # only meant to run on the NEW server once migration cutover begins
