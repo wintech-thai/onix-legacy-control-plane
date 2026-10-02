@@ -28,7 +28,7 @@ backupRestore:
   app:
     namespace: onix-prod
     podKeyword: onix-legacy-api-acd         # used to find the pod since its name changes on restart
-    dataPath: /wis/data
+    dataPath: /wis/data/storage
 
   storage:
     url: https://storage.googleapis.com
