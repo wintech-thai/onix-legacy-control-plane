@@ -2,9 +2,9 @@
 onix-legacy-api: # ACD company
   pods:
     image:
-      tag: "v0.0.16"
+      tag: "v0.0.17"
 
 onix-legacy-api-aip: # AIP company
   pods:
     image:
-      tag: "v0.0.16"
+      tag: "v0.0.17"
